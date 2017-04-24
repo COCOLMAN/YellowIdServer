@@ -29,7 +29,10 @@ SECRET_KEY = config['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'ec2-52-79-164-64.ap-northeast-2.compute.amazonaws.com',
+    '127.0.0.1'
+]
 
 
 # Application definition
@@ -41,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'api',
 
     'rest_framework',
 ]
