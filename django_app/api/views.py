@@ -24,10 +24,12 @@ class CheckAPIView(views.APIView):
         if '소마' == request.data['content']:
             data = urllib.request.urlopen("http://www.swmaestro.kr/web/web/recruitment/applicationGuide.do")
             s_data = bs(data)
-            if len(s_data.findAll('p')[3].text) == 530:
-                ret['message']['text'] = '변화없음'
+            if '2016' in s_data.findAll('p')[3].text:
+                text = '변화없음(2016년 버전)\n'
+                text += s_data.findAll('p')[3].text
+                ret['message']['text'] = text
                 return Response(ret)
             else:
-                ret['message']['text'] = '변화있음'
+                ret['message']['text'] = '변화있음 홈페이지에서 확인바랍니다.'
                 return Response(ret)
         return Response(ret)
